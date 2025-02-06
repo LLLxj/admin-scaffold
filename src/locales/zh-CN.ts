@@ -1,0 +1,127 @@
+export default {
+  confirm: '确定',
+  cancle: '取消',
+  search: '搜索',
+  create: '创建',
+  edit: '编辑',
+  enabled: '启用',
+  disabled: '禁用',
+  status: '状态',
+  delete: '删除',
+  more: '更多',
+  next: '下一步',
+  prev: '上一步',
+  operate_success: '操作成功',
+  table_column_action: '操作',
+
+  // auth module
+  auth_login_mobile: '手机号',
+  auth_login_rule_mobile_message: '手机号不能为空',
+  auth_login_password: '密码',
+  auth_login_rule_password_message: '密码不能为空',
+  auth_login_confirm: '确定',
+
+  // task module
+  task_search_content_label: '任务内容',
+  task_search_category: '分类',
+  task_column_content: '内容',
+  task_column_category: '分类',
+  task_column_start_time: '开始时间',
+  task_column_end_time: '结束时间',
+  task_column_duration: '耗时',
+  task_sumbit_rule_content_message: '任务内容不能为空',
+  task_sumbit_rule_category_message: '请选择分类',
+
+  // task dashboard
+  task_dashboard_search_range_label: '时间范围',
+
+  // tag module
+  tag_search_name: '名称',
+  tag_search_module: '模块',
+  tag_column_name: '名称',
+  tag_column_rule_name_message: '标签名称不能为空',
+  tag_column_module: '模块',
+  tag_column_rule_module_message: '模块不能为空',
+
+  // department module
+  department_append_child: '添加子节点',
+  department_remove_node: '删除部门',
+  department_remove_node_confirm_title: '删除部门',
+  department_remove_node_confirm_description: '确认删除部门，此操作不可恢复',
+  department_append_user: '添加人员',
+  department_choose_user: '选择人员',
+  department_name: '部门名称',
+  department_sort_order: '排序',
+  department_sumbit_rule_name_message: '部门名称不能为空',
+  department_sumbit_rule_sort_order_message: '排序不能为空',
+  department_sumbit_rule_choose_user_message: '人员不能为空',
+
+  // department user module
+  department_user_column_id: '用户ID',
+  department_user_column_user_name: '用户名',
+
+  // role module
+  role_search_name_label: '角色名称',
+  role_column_id: 'ID',
+  role_column_name: '角色名称',
+  role_edit_tabs_create: '创建角色',
+  role_edit_tabs_edit: '编辑角色',
+  role_edit_tabs_set_permission: '权限',
+  role_edit_tabs_set_property: '属性',
+  role_edit_tabs_set_rule: '规则',
+  role_edit_name: '角色名称',
+  role_sumbit_rule_name_message: '角色名称不能为空',
+  role_edit_permission: '选择权限',
+  role_remove_role_confirm_title: '删除角色',
+  role_remove_role_confirm_description: '确认删除角色，此操作不可恢复',
+
+  // account module
+  account_column_id: 'ID',
+  account_column_name: '账号',
+  account_column_mobile: '手机号',
+  account_column_role: '角色',
+  account_column_status: '状态',
+  account_column_handle_setting_role: '编辑',
+  account_handle_edit_role: '编辑账户',
+
+  // resource module
+  resource_search_name_label: '资源名称',
+  resource_column_name: '资源名称',
+  resource_column_code: '资源code',
+  resource_column_create_time: '创建时间',
+  resource_edit_name: '资源名称',
+  resource_edit_sortOrder: '资源排序',
+  resource_edit_status: '状态',
+  resource_edit_parent_id: '所属目录',
+  resource_sumbit_rule_name_message: '资源名称不能为空',
+  resource_sumbit_rule_parent_id_message: '所属目录不能为空',
+  resource_remove_resource_confirm_title: '删除资源',
+  resource_remove_resource_confirm_description: '确认删除资源，此操作不可恢复',
+
+  // permission module
+  permission_search_name_label: '权限名称',
+  permission_column_name: '权限名称',
+  permission_column_code: '权限code',
+  permission_column_status: '状态',
+  permission_column_create_time: '创建时间',
+  permission_edit_name: '名称',
+  permission_edit_status: '状态',
+  permission_edit_sortOrder: '排序',
+  permission_edit_resource: '所属资源',
+  permission_remove_resource_confirm_title: '删除权限',
+  permission_remove_resource_confirm_description: '确认删除权限，此操作不可恢复',
+
+  // router
+  route_dashboard: '首页',
+  route_task: '任务',
+  route_task_manage: '任务管理',
+  route_task_list: '任务列表',
+  route_task_dashboard: '任务看板',
+  route_tag: '标签',
+  route_system_config: '系统管理',
+  route_system_department: '部门管理',
+  route_system_role: '角色管理',
+  route_system_account: '账号管理',
+  route_system_resource: '资源管理',
+  route_system_permission: '权限管理',
+};
