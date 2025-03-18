@@ -39,10 +39,10 @@ request.interceptors.request.use(
 // 响应拦截器
 request.interceptors.response.use(
   (response) => {
-    if ([200, 201]?.includes(response?.status)) {
+    if ([200]?.includes(response?.status)) {
       const code = response?.data?.code;
       const responseMap: Record<number, () => void> = {
-        200: () => {
+        0: () => {
           return response?.data?.result
         },
         1: () => {
