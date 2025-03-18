@@ -89,8 +89,8 @@ export const Modal: React.FC<ModalProps> = ({
       onOk={onOk}
       footer={
         noFooter
-          ? undefined
-          : footerRender
+          ? []
+          : footerRender()
       }
     >
       <Spin
