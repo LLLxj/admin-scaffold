@@ -131,7 +131,7 @@ export const EditResource: React.FC<ResourceEditProps> = ({
             <TreeSelect
               ref={resourceTreeRef}
               treeDefaultExpandAll
-              asyncHandle={ResourceService.getTree}
+              asyncHandle={ResourceService.getResourceTree}
               asyncParams={{}}
               formatResult={(list) => {
                 const tree = formatTree(list, 'id', 'name')
