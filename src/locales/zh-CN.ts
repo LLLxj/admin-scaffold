@@ -2,6 +2,7 @@ export default {
   confirm: '确定',
   cancle: '取消',
   search: '搜索',
+  reset: '重置',
   create: '创建',
   edit: '编辑',
   enabled: '启用',

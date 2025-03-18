@@ -17,6 +17,11 @@ export const Search: React.FC<SearchProps> = ({
 
   const { t } = useLocale()
 
+  const resetHandle = async () => {
+    await form.resetFields()
+    searchHandle()
+  }
+
   return (
     <Form
       name="task-search"
@@ -58,6 +63,15 @@ export const Search: React.FC<SearchProps> = ({
               buttonType='primary'
               successCallback={searchHandle}
             />
+          </Form.Item>
+        </Col>
+        <Col>
+          <Form.Item>
+            <Button
+              onClick={resetHandle}
+            >
+              { t('reset') }
+            </Button>
           </Form.Item>
         </Col>
       </Row>

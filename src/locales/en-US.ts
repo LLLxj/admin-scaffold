@@ -2,6 +2,7 @@ export default {
   confirm: 'confirm',
   cancle: 'cancle',
   search: 'search',
+  reset: 'reset',
   create: 'create',
   edit: 'edit',
   enabled: 'enabled',
