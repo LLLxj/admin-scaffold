@@ -106,7 +106,7 @@ const Department: React.FC = () => {
       dataIndex: 'action',
       titleCol: 6,
       fixed: 'right',
-      render: (_: any, record: IAccount) => renderAction(record),
+      render: (_: any, record: IDepartment) => renderAction(record),
     },
   ];
 

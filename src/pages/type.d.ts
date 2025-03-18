@@ -5,6 +5,8 @@ export interface ISetRefreshDeps {
   toggle: () => void;
 }
 
+export type ISuccessCallback = () => void;
+
 export interface IModalRef {
   init: (data?: any) => void;
 }

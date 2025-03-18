@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import type { EditAccountProps } from './type'
 import {
   Button,
@@ -7,6 +7,7 @@ import {
   Select,
   message,
   Access,
+  Input,
 } from '@/components';
 import { useLocale, UseModal, useRequest } from '@/hooks'
 import RoleService from '@/services/role';
@@ -16,7 +17,10 @@ import type { IConditionResponseItem } from '@/services/condition/type'
 
 export const EditAccount: React.FC<EditAccountProps> = ({
   userId,
-  setRefreshDepsFn,
+  successCallback = () => {},
+  buttonLabel,
+  buttonType,
+  buttonInTable,
 }) => {
 
   const { t } = useLocale();
@@ -26,6 +30,13 @@ export const EditAccount: React.FC<EditAccountProps> = ({
     label: string;
     value: number | string
   }[]>([])
+
+  const getUpdateRequest = () => {
+    if (userId) {
+      return AccountService.update;
+    }
+    return AccountService.create;
+  }
 
   const getAllRoleRequest = useRequest(
     RoleService.all,
@@ -48,6 +59,7 @@ export const EditAccount: React.FC<EditAccountProps> = ({
       onSuccess: (data: IAccount) => {
         const roleIds = data?.roles?.map((item) => item?.id);
         form.setFieldsValue({
+          ...data,
           roleIds
         })
       }
@@ -55,7 +67,7 @@ export const EditAccount: React.FC<EditAccountProps> = ({
   )
 
   const updateUserRoleRequest = useRequest(
-    AccountService.updateUserRole,
+    getUpdateRequest(),
     {
       onSuccess: () => {
         message.success({
@@ -63,7 +75,7 @@ export const EditAccount: React.FC<EditAccountProps> = ({
           duration: 1.5,
           onClose: () => {
             onCancel()
-            setRefreshDepsFn.toggle()
+            successCallback()
           }
         })
       }
@@ -73,7 +85,9 @@ export const EditAccount: React.FC<EditAccountProps> = ({
   const editFn = () => {
     setOpenFn.toggle()
     getAllRoleRequest.run()
-    getUserInfoRequest.run(userId)
+    if (userId) {
+      getUserInfoRequest.run(userId)
+    }
   }
 
   const onCancel = () => {
@@ -84,10 +98,10 @@ export const EditAccount: React.FC<EditAccountProps> = ({
 
   const submit = async () => {
     await form.validateFields()
-    const roleIds = await form.getFieldValue('roleIds')
+    const formData = await form.getFieldsValue()
     updateUserRoleRequest.run({
-      userId,
-      roleIds,
+      id: userId,
+      ...formData
     })
   }
 
@@ -101,19 +115,19 @@ export const EditAccount: React.FC<EditAccountProps> = ({
   return (
     <>
       <Access
-        permission='用户管理用户-角色属性保存'
+        permission='用户管理用户管理新增/编辑'
       >
         <Button
-          type='link'
-          inTable={true}
+          type={buttonType}
+          inTable={buttonInTable}
           onClick={editFn}
         >
-          {t('account_column_handle_setting_role')}
+          { buttonLabel }
         </Button>
       </Access>
       
       <Modal
-        title={t('account_handle_edit_role')}
+        title={buttonLabel}
         open={open}
         onCancel={onCancel}
         loading={renderLoding()}
@@ -140,7 +154,27 @@ export const EditAccount: React.FC<EditAccountProps> = ({
           form={form}
         >
           <Form.Item
-            label="角色"
+            label={t('account_edit_name')}
+            name="name"
+            rules={[{
+              required: true,
+              message: t('account_sumbit_rule_name_message')
+            }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label={t('account_edit_mobile')}
+            name="mobile"
+            rules={[{
+              required: true,
+              message: t('account_sumbit_rule_mobile_message')
+            }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label={t('account_edit_role')}
             name="roleIds"
           >
             <Select

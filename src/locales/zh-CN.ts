@@ -84,12 +84,17 @@ export default {
 
   // account module
   account_column_id: 'ID',
-  account_column_name: '账号',
+  account_column_name: '账号名称',
   account_column_mobile: '手机号',
   account_column_role: '角色',
   account_column_status: '状态',
   account_column_handle_setting_role: '编辑',
   account_handle_edit_role: '编辑账户',
+  account_edit_name: '账号名称',
+  account_edit_mobile: '手机号',
+  account_edit_role: '角色',
+  account_sumbit_rule_name_message: '账号名称不能为空',
+  account_sumbit_rule_mobile_message: '手机号名称不能为空',
 
   // resource module
   resource_search_name_label: '资源名称',

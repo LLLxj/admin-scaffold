@@ -1,7 +1,32 @@
 import { request } from '@/utils/request';
-import type { IUpdateUserRole } from './type'
+import type {
+  ICreateUser,
+  IUpdateUser,
+  IUpdateUserRole
+} from './type'
 
 class Account {
+
+  static create(data: ICreateUser): Promise<any> {
+    return request(
+      '/user/create',
+      {
+        method: 'post',
+        data
+      }
+    );
+  }
+
+  static update(data: IUpdateUserRole): Promise<any> {
+    return request(
+      '/user/update',
+      {
+        method: 'post',
+        data
+      }
+    );
+  }
+
   static search(data: any): Promise<any> {
     return request(
       '/user/search',

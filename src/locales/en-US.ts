@@ -90,6 +90,11 @@ export default {
   account_column_status: 'status',
   account_column_handle_setting_role: 'edit',
   account_handle_edit_role: 'edit account',
+  account_edit_name: 'account name',
+  account_edit_mobile: 'account mobile',
+  account_edit_role: 'account role',
+  account_sumbit_rule_name_message: 'account name is not empty',
+  account_sumbit_rule_mobile_message: 'account mobile is not empty',
 
   // resource module
   resource_search_name_label: 'resource name',

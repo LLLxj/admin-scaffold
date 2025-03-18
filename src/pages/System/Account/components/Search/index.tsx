@@ -7,6 +7,7 @@ import {
   Input
 } from '@/components';
 import { useLocale } from '@/hooks';
+import { EditAccount } from '../Edit';
 import type { SearchProps } from './type'
 
 export const Search: React.FC<SearchProps> = ({
@@ -47,6 +48,16 @@ export const Search: React.FC<SearchProps> = ({
             >
               {t('search')}
             </Button>
+          </Form.Item>
+          
+        </Col>
+        <Col>
+          <Form.Item>
+            <EditAccount
+              buttonLabel={t('create')}
+              buttonType='primary'
+              successCallback={searchHandle}
+            />
           </Form.Item>
         </Col>
       </Row>

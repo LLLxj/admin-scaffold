@@ -1,6 +1,9 @@
-import type { ISetRefreshDeps } from '@/pages/type'
-
+import type { ISuccessCallback } from '@/pages/type'
+import type { ButtonType } from '@/components/Button/type'
 export interface EditAccountProps {
-  userId: number;
-  setRefreshDepsFn: ISetRefreshDeps;
+  userId?: number;
+  successCallback: ISuccessCallback;
+  buttonLabel: string;
+  buttonType: ButtonType;
+  buttonInTable?: boolean;
 }
