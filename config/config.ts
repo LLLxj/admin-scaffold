@@ -3,7 +3,6 @@ import { defineConfig } from '@umijs/max';
 import proxy from './proxy';
 import routes from './routes';
 const { REACT_APP_ENV = 'local' } = process.env;
-
 export default defineConfig({
   access: {},
   model: {},

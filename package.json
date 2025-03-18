@@ -1,9 +1,10 @@
 {
+  "name": "yl-crm-admin",
   "private": true,
   "author": "liuzijian <253358001@qq.com>",
   "scripts": {
     "build": "max build",
-    "dev": "PORT=3333 max dev",
+    "dev": "PORT=2222 max dev",
     "format": "prettier --cache --write .",
     "postinstall": "max setup",
     "prepare": "husky",
@@ -20,9 +21,11 @@
     "ahooks": "3.7.5",
     "antd": "5.15.3",
     "axios": "^1.6.8",
+    "classnames": "^2.3.2",
     "echarts": "^5.5.0",
     "echarts-for-react": "^3.0.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",

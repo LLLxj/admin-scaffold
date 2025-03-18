@@ -11,11 +11,11 @@ const routes = [
       {
         path: '/task',
         name: 'route_task_manage',
-        permissionCodes: [
-          '任务管理',
-          '任务管理列表',
-          '任务看板'
-        ],
+        // permissionCodes: [
+        //   '任务管理',
+        //   '任务管理列表',
+        //   '任务看板'
+        // ],
         routes: [
           {
             path: '/task/manage',
