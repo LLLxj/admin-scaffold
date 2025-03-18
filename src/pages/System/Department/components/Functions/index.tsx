@@ -4,7 +4,7 @@ import {
   Col,
 } from '@/components';
 import type { FunctionsProps } from './type';
-import { CreateDepartment, DeleteDepartment, AddDepartmentUser } from '../index'
+import { EditDepartment, DeleteDepartment, AddDepartmentUser } from '../index'
 
 export const Functions: React.FC<FunctionsProps> = ({
   node,
@@ -16,8 +16,8 @@ export const Functions: React.FC<FunctionsProps> = ({
       gutter={[8, 0]}
     >
       <Col>
-        <CreateDepartment
-          setRefreshDeps={successCallback}
+        <EditDepartment
+          successCallback={successCallback}
           departmentId={node.key as number}
         />
       </Col>

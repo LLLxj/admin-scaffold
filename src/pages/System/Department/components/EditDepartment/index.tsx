@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo, useRef } from 'react'
 import {
   Modal,
   Form,
@@ -6,27 +6,31 @@ import {
   InputNumber,
   Button,
   Spin,
-  Tooltip,
   message,
+  TreeSelect,
 } from '@/components'
 import { useRequest, useLocale } from '@/hooks'
 import Department from '@/services/department'
 import { useToggle } from 'ahooks'
+import type { DataComponentProps } from '@/pages/type'
+import type { ITree } from '@/components/TreeSelect/type'
+import type { ButtonType } from '@/components/Button/type'
 
-import { PlusOutlined } from '@ant-design/icons'
 
-interface CreateDepartmentProps {
-  setRefreshDeps: () => void;
-  departmentId: number;
+interface EditDepartmentProps {
+  successCallback: () => void;
+  departmentId?: number;
 }
 
-export const CreateDepartment: React.FC<CreateDepartmentProps> = ({
-  setRefreshDeps,
+export const EditDepartment: React.FC<EditDepartmentProps> = ({
+  successCallback,
   departmentId
 }) => {
   const { t } = useLocale();
   const [visible, setVisibleFn] = useToggle(false)
   const [form] = Form.useForm()
+  const departmentTreeRef = useRef<DataComponentProps>()
+  
 
   const updateRequest = useRequest(
     Department.create,
@@ -34,13 +38,46 @@ export const CreateDepartment: React.FC<CreateDepartmentProps> = ({
       onSuccess: () => {
         message.success(t('operate_success'));
         onCancel()
-        setRefreshDeps()
+        successCallback()
       }
     }
   )
 
-  const appendChild = () => {
+  const buttonOption = useMemo(() => {
+    if (departmentId) {
+      return {
+        props: {
+          type: 'link' as ButtonType,
+          inTable: true,
+        },
+        label: t('edit')
+      }
+    }
+    return {
+      props: {
+        type: 'primary' as ButtonType
+      },
+      label: t('create')
+    }
+  }, [departmentId])
+
+  const formatTree = (data: any[] = []) => {
+    if (!data?.length) {
+      return []
+    }
+    const tree: ITree[] = data?.map((item: any) => {
+      return {
+        title: item?.name,
+        value: item?.id,
+        children: formatTree(item?.children)
+      }
+    })
+    return tree
+  }
+
+  const createFn = () => {
     setVisibleFn.toggle()
+    departmentTreeRef.current?.initData()
   }
 
   const onCancel = () => {
@@ -50,10 +87,7 @@ export const CreateDepartment: React.FC<CreateDepartmentProps> = ({
 
   const submit = async () => {
     const formData = await form.validateFields()
-    updateRequest.run({
-      ...formData,
-      parentId: departmentId
-    })
+    updateRequest.run(formData)
   }
 
   const renderLoading = () => {
@@ -66,15 +100,14 @@ export const CreateDepartment: React.FC<CreateDepartmentProps> = ({
 
   return (
     <>
-      <Tooltip
-        title={t('department_append_child')}
+       <Button
+        { ...buttonOption.props }
+        onClick={createFn}
       >
-        <PlusOutlined
-          onClick={appendChild}
-        />
-      </Tooltip>
+        { buttonOption.label }
+      </Button>
       <Modal
-        title={t('department_append_child')}
+        title={t('department_append_department')}
         open={visible}
         onCancel={onCancel}
         footer={[
@@ -120,6 +153,21 @@ export const CreateDepartment: React.FC<CreateDepartmentProps> = ({
               }]}
             >
               <InputNumber />
+            </Form.Item>
+            <Form.Item
+              label={t('department_parent_department')}
+              name="parentId"
+            >
+              <TreeSelect
+                ref={departmentTreeRef}
+                asyncHandle={Department.getTree}
+                asyncParams={{}}
+                treeDefaultExpandAll={true}
+                formatResult={(tree) => {
+                  const list = formatTree(tree)
+                  return list
+                }}
+              />
             </Form.Item>
           </Form>
         </Spin>
