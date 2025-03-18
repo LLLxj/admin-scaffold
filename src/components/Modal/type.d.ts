@@ -4,4 +4,6 @@ export interface ModalProps extends AntdModalProps {
   size?: 'small' | 'middle' | 'large';
   loading?: boolean;
   height?: number;
+  noFooter?: boolean;
+  onOkLoading?: boolean | (() => boolean);
 }

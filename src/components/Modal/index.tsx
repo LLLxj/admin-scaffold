@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
-import { Modal as AntdModal } from 'antd';
+import { Modal as AntdModal, Button } from 'antd';
+import { useLocale } from '@/hooks';
 import { Spin } from '../Spin';
 import type { ModalProps } from './type';
 import { toNumber } from '@/utils'
@@ -12,9 +13,14 @@ export const Modal: React.FC<ModalProps> = ({
   height,
   children,
   style = {},
+  onCancel,
+  onOk,
+  noFooter = false,
+  footer,
   ...props
 }) => {
 
+  const { t } = useLocale();
   const sizeWidthMap = {
     small: {
       width: 520,
@@ -49,6 +55,27 @@ export const Modal: React.FC<ModalProps> = ({
     }
   }, [size, width, height])
 
+  const footerRender = () => {
+    if (footer) {
+      return footer
+    }
+    return (
+      <>
+        <Button
+          onClick={onCancel}
+        >
+          { t('cancle') }
+        </Button>
+        <Button
+          type='primary'
+          onClick={onOk}
+        >
+          { t('confirm') }
+        </Button>
+      </>
+    )
+  }
+
   return (
     <AntdModal
       centered={centered}
@@ -58,6 +85,13 @@ export const Modal: React.FC<ModalProps> = ({
       style={{
         ...style,
       }}
+      onCancel={onCancel}
+      onOk={onOk}
+      footer={
+        noFooter
+          ? undefined
+          : footerRender
+      }
     >
       <Spin
         spinning={loading}
