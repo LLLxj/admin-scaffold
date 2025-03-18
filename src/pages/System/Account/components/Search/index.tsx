@@ -26,7 +26,7 @@ export const Search: React.FC<SearchProps> = ({
         <Col span={8}>
           <Form.Item
             label={t('account_column_name')}
-            name="username"
+            name="name"
           >
             <Input />
           </Form.Item>

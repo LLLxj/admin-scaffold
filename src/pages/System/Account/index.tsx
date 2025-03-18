@@ -5,7 +5,7 @@ import {
   useSearch,
 } from '@/hooks';
 import AccountService from '@/services/account';
-import type { IAccount } from '@/services/account/type'
+import type { IAccount, IRole } from '@/services/account/type'
 import { EditAccount, Search } from './components';
 
 const Account: React.FC = () => {
@@ -74,7 +74,7 @@ const Account: React.FC = () => {
     },
     {
       title: t('account_column_name'),
-      dataIndex: 'username',
+      dataIndex: 'name',
     },
     {
       title: t('account_column_mobile'),
@@ -83,7 +83,15 @@ const Account: React.FC = () => {
     },
     {
       title: t('account_column_role'),
-      dataIndex: 'role',
+      dataIndex: 'roles',
+      render: (roles: IRole[]) => {
+        if (!roles.length) {
+          return undefined
+        }
+        return (
+          <span>{ roles.map((role: IRole) => role.name)?.join(',') }</span>
+        )
+      }
     },
     {
       title: t('enabled'),

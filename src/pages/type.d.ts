@@ -1,3 +1,4 @@
+import type { FormInstance } from "antd";
 export interface ISetRefreshDeps {
   setLeft: () => void;
   setRight: () => void;
@@ -12,6 +13,7 @@ export type IHandleType = 'enabled' | 'disabled' | 'delete';
 
 export interface ISearchProps {
   searchHandle: () => void;
+  form?: FormInstance;
 }
 export interface ISearchRefProps {
   getFormValue: () => void;
