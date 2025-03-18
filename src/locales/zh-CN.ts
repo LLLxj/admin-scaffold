@@ -14,6 +14,8 @@ export default {
   operate_success: '操作成功',
   table_column_action: '操作',
 
+  column_id: 'id',
+
   // auth module
   auth_login_mobile: '手机号',
   auth_login_rule_mobile_message: '手机号不能为空',
@@ -44,7 +46,10 @@ export default {
   tag_column_rule_module_message: '模块不能为空',
 
   // department module
+  department_search_name: '部门名称',
   department_append_child: '添加子节点',
+  department_append_department: '添加部门',
+  department_parent_department: '上级部门',
   department_remove_node: '删除部门',
   department_remove_node_confirm_title: '删除部门',
   department_remove_node_confirm_description: '确认删除部门，此操作不可恢复',
@@ -55,6 +60,8 @@ export default {
   department_sumbit_rule_name_message: '部门名称不能为空',
   department_sumbit_rule_sort_order_message: '排序不能为空',
   department_sumbit_rule_choose_user_message: '人员不能为空',
+  department_column_name: '部门名称',
+  department_column_parent: '父级部门',
 
   // department user module
   department_user_column_id: '用户ID',

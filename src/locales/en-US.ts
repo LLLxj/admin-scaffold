@@ -14,6 +14,8 @@ export default {
   operate_success: 'operate success',
   table_column_action: 'action',
 
+  column_id: 'id',
+
   // auth module
   auth_login_mobile: 'mobile',
   auth_login_rule_mobile_message: 'mobile is not empty',
@@ -44,7 +46,10 @@ export default {
   tag_column_rule_module_message: 'module is not empty',
 
   // department module
+  department_search_name: 'name',
   department_append_child: 'append child',
+  department_append_department: 'append department',
+  department_parent_department: 'parent department',
   department_remove_node: 'remove department',
   department_remove_node_confirm_title: 'delete department',
   department_remove_node_confirm_description: 'confirm delete department',
@@ -55,6 +60,8 @@ export default {
   department_sumbit_rule_name_message: 'department name is not empty',
   department_sumbit_rule_sort_order_message: 'sort order is not empty',
   department_sumbit_rule_choose_user_message: 'user is not empty',
+  department_column_name: 'department name',
+  department_column_parent: 'department parent',
 
   // department user module
   department_user_column_id: 'user id',
