@@ -8,7 +8,7 @@ import { useLocale } from '@/hooks';
 import { forwardRef, useImperativeHandle } from 'react';
 import type { IRoleSearchProps } from './type';
 import { Input } from '@/components'
-import { EditRole } from '../Edit';
+import { CreateRole } from '../index';
 
 export const Search = forwardRef(
   ({ searchHandle }: IRoleSearchProps, parentRef) => {
@@ -51,8 +51,7 @@ export const Search = forwardRef(
             </Col>
             <Col>
               <Form.Item>
-                <EditRole
-                  type='primary'
+                <CreateRole
                   successCallback={searchHandle}
                 />
               </Form.Item>
