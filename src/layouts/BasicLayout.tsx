@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProLayout from '@ant-design/pro-layout';
-import { useModel, Link } from '@umijs/max';
-import { Outlet } from 'umi';
+import { useModel, Link, Outlet, useLocation } from '@umijs/max';
 import { HeaderContent } from '@/components';
 import { useLocale } from '@/hooks';
 import type { Route } from '@ant-design/pro-layout/es/typing'
@@ -13,7 +12,7 @@ const BasicLayout: React.FC = () => {
   const { getUserInfo } = useModel('auth');
   const [currentUser, setCurrentUser] = useState<ICurrentUser>()
   const { t } = useLocale();
-
+  const location = useLocation();
   useEffect(() => {
     getCurrentUser()
   }, []);
@@ -36,6 +35,7 @@ const BasicLayout: React.FC = () => {
         name: t(item?.name),
       }
     })
+    
     return {
       ..._routes?.[0],
       routes: _routes
@@ -67,6 +67,7 @@ const BasicLayout: React.FC = () => {
         logo={null}
         title="blog-admin"
         route={formatRoutes()}
+        location={location} // 传递 location 属性
         menuItemRender={(menuItemProps: any, defaultDom: any) => {
           return <Link to={menuItemProps.path}>{defaultDom}</Link>;
         }}
