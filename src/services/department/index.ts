@@ -4,9 +4,21 @@ import type {
   ICreateDepartment,
   ICreateDepartmentUser,
   ISearchDepartmentUser,
+  ISearchCondition,
 } from './type'
 
 class Department {
+
+  static search(data: ISearchCondition) {
+    return request(
+      '/department/search',
+      {
+        method: 'post',
+        data,
+      }
+    )
+  }
+
   static getTree(data: ISearchTreeCondition) {
     return request(
       '/department/tree',
@@ -19,7 +31,7 @@ class Department {
 
   static create(data: ICreateDepartment) {
     return request(
-      '/department',
+      '/department/create',
       {
         method: 'post',
         data,

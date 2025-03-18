@@ -1,5 +1,10 @@
+import type { ICommonColumn } from "../type";
 export interface ISearchTreeCondition {
   departmentId: number;
+}
+
+export interface ISearchCondition {
+  name?: string;
 }
 
 export interface ICreateDepartment {
@@ -15,6 +20,15 @@ export interface ICreateDepartmentUser {
 
 export interface ISearchDepartmentUser {
   departmentId: number;
+}
+
+export interface IDepartment {
+  id: number;
+  name: string;
+  parent: ICommonItem,
+  enabled: true,
+  createTime: string;
+  updateTime: string;
 }
 
 export interface IDepartmentUser {

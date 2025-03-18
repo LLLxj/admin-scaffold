@@ -18,6 +18,11 @@ export interface ISearchCommonResponse {
   createTime: string;
 }
 
+export interface ICommonItem {
+  id: number;
+  name: string;
+}
+
 export type ButtonType =
   | "default"
   | "link"
