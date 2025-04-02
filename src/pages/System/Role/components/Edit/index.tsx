@@ -262,8 +262,31 @@ export const EditRole: React.FC<EditRoleProps> = ({
   const getRuleRelationRequest = useRequest(
     RoleService.getRuleRelation,
     {
-      onSuccess: (data) => {
-        console.log(data)
+      onSuccess: (data: ISearchPermissionRelationItem[]) => {
+        const _ruleTreeData =
+          data?.length
+            ? data?.map((item) => {
+                return {
+                  title: item?.name,
+                  value: item?.id,
+                  key: item?.id,
+                }
+              })
+            : []
+        const _selectedRules =
+          data?.length
+            ? data?.reduce((prev: number[], cur: ISearchPermissionRelationItem) => {
+                if (cur?.selected) {
+                  return [
+                    ...prev,
+                    cur?.id
+                  ]
+                }
+                return prev;
+              }, [])
+            : []
+        propertyTreeRef.current?.setData(_ruleTreeData)
+        setSelectedProperties(_selectedRules)
       }
     }
   )
@@ -285,6 +308,21 @@ export const EditRole: React.FC<EditRoleProps> = ({
 
   const updateRolePropertyRequest = useRequest(
     RoleService.updateRolePeroperty,
+    {
+      onSuccess: () => {
+        message.success({
+          content: t('operate_success'),
+          duration: 1.5,
+          onClose: () => {
+            onCancel()
+          }
+        })
+      }
+    }
+  )
+
+  const updateRoleRuleRequest = useRequest(
+    RoleService.updateRoleRule,
     {
       onSuccess: () => {
         message.success({
@@ -360,7 +398,7 @@ export const EditRole: React.FC<EditRoleProps> = ({
       role_edit_property:
         () => getPropertyTreeRequest.run(resourceId, roleId),
       role_edit_rule:
-        () => getRuleTreeRequest.run(resourceId, roleId),
+        () => getPropertyTreeRequest.run(resourceId, roleId),
     }
     if (type && handleMap?.[type]) {
       handleMap?.[type]()
@@ -381,19 +419,25 @@ export const EditRole: React.FC<EditRoleProps> = ({
       resourceId,
       roleId,
     }
+    const formatResourceId = resourceId as string;
+    const keys = formatResourceId?.split('_');
+    const permissionId = keys?.[keys?.length - 1]
+    const getPropertyParams = {
+      permissionId,
+      roleId,
+    }
     const handleMap: Record<ItemKey, () => void> = {
       role_edit_permission:
-        () => getPermissionRelationRequest.run({
-          resourceId,
-          roleId,
-        }),
+        () => getPermissionRelationRequest.run(getRelationParams),
       role_edit_property:
         () => getPropertyRelationRequest.run({
           permissionId: resourceId,
           roleId,
         }),
       role_edit_rule:
-        () => getPermissionRelationRequest.run(getRelationParams),
+        () => {
+          getRuleRelationRequest.run(getPropertyParams);
+        }
     }
     if (handleMap?.[type]) {
       handleMap?.[type]()
@@ -420,7 +464,13 @@ export const EditRole: React.FC<EditRoleProps> = ({
   }
 
   const updateRoleRule = () => {
-
+    const permissionId = getRuleKey(selectedKeys?.[0])
+    const postData = {
+      permissionId,
+      roleId,
+      rules: selectProperties,
+    }
+    updateRoleRuleRequest.run(postData)
   }
  
   const submit = async () => {
@@ -444,6 +494,12 @@ export const EditRole: React.FC<EditRoleProps> = ({
     const key = initKey as string;
     const keys = key?.split('_')
     return Number(keys?.[0])
+  }
+
+  const getRuleKey = (initKey: Key) => {
+    const key = initKey as string;
+    const keys = key?.split('_')
+    return Number(keys?.[keys?.length - 1])
   }
 
   const handleTreeData = (treeData: ITree[]) => {

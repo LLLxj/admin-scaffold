@@ -4,6 +4,7 @@ import type {
   IRoleChangeEnabled,
   IUpdateRoleRelation,
   ISearchRoleRelation,
+  IUpdateRoleRuleRelation,
 } from './type'
 
 class Role {
@@ -19,7 +20,7 @@ class Role {
 
   static create(data: ISearchRoleCondition) {
     return request(
-      '/role',
+      '/role/create',
       {
         method: 'post',
         data,
@@ -66,6 +67,16 @@ class Role {
     )
   }
 
+  static updateRoleRule(data: IUpdateRoleRuleRelation) {
+    return request(
+      '/role/relation/rule/update',
+      {
+        method: 'post',
+        data,
+      }
+    )
+  }
+
   static removeRole(roleId: number) {
     return request(
       `/role/${roleId}`,
@@ -104,11 +115,12 @@ class Role {
     )
   }
 
-  static getRuleRelation(resourceId: number, roleId: number) {
+  static getRuleRelation(data: ISearchRoleRelation) {
     return request(
-      `/role/rule/${resourceId}/${roleId}`,
+      `/role/relation/rule`,
       {
-        method: 'get',
+        method: 'post',
+        data
       }
     )
   }

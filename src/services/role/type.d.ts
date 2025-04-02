@@ -25,6 +25,12 @@ export interface IUpdateRoleRelation {
   permissions: number[];
 }
 
+export interface IUpdateRoleRuleRelation {
+  roleId: number;
+  permissionId: number;
+  rules: number[];
+}
+
 export interface IRoleInfoPermissionResponse {
   permissionId: string;
   permissionName: string;
@@ -46,6 +52,11 @@ export interface IRoleInfoResponse {
 
 export interface ISearchRoleRelation {
   resourceId: number;
+  role: number;
+}
+
+export interface ISearchRoleRuleRelation {
+  permissionId: number;
   role: number;
 }
 
