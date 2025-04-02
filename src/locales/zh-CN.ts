@@ -24,16 +24,21 @@ export default {
   auth_login_rule_password_message: '密码不能为空',
   auth_login_confirm: '确定',
 
-  // task module
-  task_search_content_label: '任务内容',
-  task_search_category: '分类',
-  task_column_content: '内容',
-  task_column_category: '分类',
-  task_column_start_time: '开始时间',
-  task_column_end_time: '结束时间',
-  task_column_duration: '耗时',
-  task_sumbit_rule_content_message: '任务内容不能为空',
-  task_sumbit_rule_category_message: '请选择分类',
+  // shop module
+  shop_search_name_label: '店家名称',
+  shop_search_mobile_label: '店家手机号',
+  shop_column_name: '店家名称',
+  shop_column_mobile: '店家手机号',
+  shop_column_contact_name: '联系人姓名',
+  shop_column_boss_name: '总裁姓名',
+  shop_edit_name: '店家名称',
+  shop_edit_mobile: '联系方式',
+  shop_edit_contact_name: '联系人名称',
+  shop_edit_boss_name: '总裁姓名',
+  shop_edit_description: '店家简介',
+  shop_sumbit_rule_name_message: '店家名称不能为空',
+  shop_remove_shop_confirm_title: '删除店家',
+  shop_remove_shop_confirm_description: '确定删除店家',
 
   // task dashboard
   task_dashboard_search_range_label: '时间范围',
@@ -54,8 +59,10 @@ export default {
   department_remove_node: '删除部门',
   department_remove_node_confirm_title: '删除部门',
   department_remove_node_confirm_description: '确认删除部门，此操作不可恢复',
+  department_edit_user: '编辑人员',
   department_append_user: '添加人员',
   department_choose_user: '选择人员',
+  department_setting_manager: '设置主管',
   department_name: '部门名称',
   department_sort_order: '排序',
   department_sumbit_rule_name_message: '部门名称不能为空',
@@ -94,8 +101,10 @@ export default {
   account_edit_name: '账号名称',
   account_edit_mobile: '手机号',
   account_edit_role: '角色',
+  account_edit_password: '密码',
   account_sumbit_rule_name_message: '账号名称不能为空',
-  account_sumbit_rule_mobile_message: '手机号名称不能为空',
+  account_sumbit_rule_mobile_message: '手机号不能为空',
+  account_sumbit_rule_password_message: '密码不能为空',
 
   // resource module
   resource_search_name_label: '资源名称',
@@ -126,11 +135,8 @@ export default {
 
   // router
   route_dashboard: '首页',
-  route_task: '任务',
-  route_task_manage: '任务管理',
-  route_task_list: '任务列表',
-  route_task_dashboard: '任务看板',
-  route_tag: '标签',
+  route_shop_manage: '店家管理',
+  route_shop_list: '店家列表',
   route_system_config: '系统管理',
   route_system_department: '部门管理',
   route_system_role: '角色管理',

@@ -24,16 +24,21 @@ export default {
   auth_login_rule_password_message: 'password is not empty',
   auth_login_confirm: 'submit',
 
-  // task module
-  task_search_content_label: 'content',
-  task_search_category: 'category',
-  task_column_content: 'content',
-  task_column_category: 'category',
-  task_column_start_time: 'start time',
-  task_column_end_time: 'end time ',
-  task_column_duration: 'duration',
-  task_sumbit_rule_content_message: 'content is not empty',
-  task_sumbit_rule_category_message: 'category is not empty',
+  // shop module
+  shop_search_name_label: 'shop name',
+  shop_search_mobile_label: 'shop mobile',
+  shop_column_name: 'shop name',
+  shop_column_mobile: 'shop mobile',
+  shop_column_contact_name: 'contact name',
+  shop_column_boss_name: 'boss name',
+  shop_edit_name: 'shop name',
+  shop_edit_mobile: 'mobile',
+  shop_edit_contact_name: 'contact name',
+  shop_edit_boss_name: 'boss name',
+  shop_edit_description: 'description',
+  shop_sumbit_rule_name_message: 'shop name is not empty',
+  shop_remove_shop_confirm_title: 'delete shop',
+  shop_remove_shop_confirm_description: 'confirm delete shop',
 
   // task dashboard
   task_dashboard_search_range_label: 'time range',
@@ -55,7 +60,9 @@ export default {
   department_remove_node_confirm_title: 'delete department',
   department_remove_node_confirm_description: 'confirm delete department',
   department_append_user: 'append user',
+  department_edit_user: 'edit user',
   department_choose_user: 'choose user',
+  department_setting_manager: 'setting manager',
   department_name: 'department name',
   department_sort_order: 'sort order',
   department_sumbit_rule_name_message: 'department name is not empty',
@@ -94,8 +101,10 @@ export default {
   account_edit_name: 'account name',
   account_edit_mobile: 'account mobile',
   account_edit_role: 'account role',
+  account_edit_password: 'account password',
   account_sumbit_rule_name_message: 'account name is not empty',
   account_sumbit_rule_mobile_message: 'account mobile is not empty',
+  account_sumbit_rule_password_message: 'account password is not empty',
 
   // resource module
   resource_search_name_label: 'resource name',
@@ -128,10 +137,8 @@ export default {
 
   // router
   route_dashboard: 'dashboard',
-  route_task: 'task',
-  route_task_manage: 'task manage',
-  route_task_list: 'task list',
-  route_task_dashboard: 'task dashboard',
+  route_shop_manage: 'shop manage',
+  route_shop_list: 'shop list',
   route_tag: 'tag',
   route_system_config: 'system config',
   route_system_department: 'department manage',
