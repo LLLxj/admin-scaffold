@@ -1,7 +1,6 @@
 import { request } from '@/utils/request';
 import type {
   ICreateUser,
-  IUpdateUser,
   IUpdateUserRole
 } from './type'
 
@@ -43,9 +42,9 @@ class Account {
     });
   }
 
-  static detail(userId: number): Promise<any> {
+  static detail(id: number): Promise<any> {
     return request(
-      `/user/${userId}`,
+      `/user/${id}`,
       {
         method: 'get',
       }
@@ -64,6 +63,15 @@ class Account {
       {
         method: 'post',
         data
+      }
+    );
+  }
+
+  static getAllUser(): Promise<any> {
+    return request(
+      '/user/all',
+      {
+        method: 'get',
       }
     );
   }

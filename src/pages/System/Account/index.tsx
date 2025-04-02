@@ -62,7 +62,7 @@ const Account: React.FC = () => {
         <EditAccount
           buttonLabel={t('edit')}
           buttonType='link'
-          userId={record?.id}
+          id={record?.id}
           buttonInTable={true}
           successCallback={() => setRefreshDepsFn.toggle()}
         />

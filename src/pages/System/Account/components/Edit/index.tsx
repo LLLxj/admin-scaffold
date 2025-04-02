@@ -8,6 +8,7 @@ import {
   message,
   Access,
   Input,
+  Password,
 } from '@/components';
 import { useLocale, UseModal, useRequest } from '@/hooks'
 import RoleService from '@/services/role';
@@ -16,7 +17,7 @@ import type { IAccount } from '@/services/account/type'
 import type { IConditionResponseItem } from '@/services/condition/type'
 
 export const EditAccount: React.FC<EditAccountProps> = ({
-  userId,
+  id,
   successCallback = () => {},
   buttonLabel,
   buttonType,
@@ -32,7 +33,7 @@ export const EditAccount: React.FC<EditAccountProps> = ({
   }[]>([])
 
   const getUpdateRequest = () => {
-    if (userId) {
+    if (id) {
       return AccountService.update;
     }
     return AccountService.create;
@@ -85,8 +86,8 @@ export const EditAccount: React.FC<EditAccountProps> = ({
   const editFn = () => {
     setOpenFn.toggle()
     getAllRoleRequest.run()
-    if (userId) {
-      getUserInfoRequest.run(userId)
+    if (id) {
+      getUserInfoRequest.run(id)
     }
   }
 
@@ -100,7 +101,7 @@ export const EditAccount: React.FC<EditAccountProps> = ({
     await form.validateFields()
     const formData = await form.getFieldsValue()
     updateUserRoleRequest.run({
-      id: userId,
+      id,
       ...formData
     })
   }
@@ -129,6 +130,7 @@ export const EditAccount: React.FC<EditAccountProps> = ({
       <Modal
         title={buttonLabel}
         open={open}
+        height={250}
         onCancel={onCancel}
         loading={renderLoding()}
         footer={[
@@ -173,6 +175,20 @@ export const EditAccount: React.FC<EditAccountProps> = ({
           >
             <Input />
           </Form.Item>
+          {
+            !id && (
+              <Form.Item
+                label={t('account_edit_password')}
+                name="password"
+                rules={[{
+                  required: true,
+                  message: t('account_sumbit_rule_password_message')
+                }]}
+              >
+                <Password />
+              </Form.Item>
+            )
+          }
           <Form.Item
             label={t('account_edit_role')}
             name="roleIds"
