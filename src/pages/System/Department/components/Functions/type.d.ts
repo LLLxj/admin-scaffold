@@ -1,6 +1,6 @@
-import type { TreeDataNode } from 'antd';
+import type { IDepartment } from '@/services/department/type'
 
 export interface FunctionsProps {
-  node: TreeDataNode;
+  department: IDepartment;
   successCallback: () => void;
 }

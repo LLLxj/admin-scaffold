@@ -10,12 +10,12 @@ import DepartmentService from '@/services/department'
 
 
 interface DeleteDepartmentProps {
-  setRefreshDeps: () => void;
+  successCallback: () => void;
   departmentId: number;
 }
 
 export const DeleteDepartment: React.FC<DeleteDepartmentProps> = ({
-  setRefreshDeps,
+  successCallback,
   departmentId
 }) => {
   const { t } = useLocale();
@@ -25,7 +25,7 @@ export const DeleteDepartment: React.FC<DeleteDepartmentProps> = ({
     {
       onSuccess: () => {
         message.success(t('operate_success'));
-        setRefreshDeps()
+        successCallback()
       }
     }
   )

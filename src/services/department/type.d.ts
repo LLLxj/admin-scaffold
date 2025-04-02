@@ -1,4 +1,3 @@
-import type { ICommonColumn } from "../type";
 export interface ISearchTreeCondition {
   departmentId: number;
 }
@@ -13,7 +12,7 @@ export interface ICreateDepartment {
   sortOrder: number;
 }
 
-export interface ICreateDepartmentUser {
+export interface IEditDepartmentUser {
   departmentId: number;
   userIds: number[];
 }

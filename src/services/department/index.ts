@@ -2,7 +2,7 @@ import { request } from "@/utils/request"
 import type {
   ISearchTreeCondition,
   ICreateDepartment,
-  ICreateDepartmentUser,
+  IEditDepartmentUser,
   ISearchDepartmentUser,
   ISearchCondition,
 } from './type'
@@ -48,9 +48,9 @@ class Department {
     )
   }
 
-  static addUser(data: ICreateDepartmentUser) {
+  static updateUser(data: IEditDepartmentUser) {
     return request(
-      `/department-user/create`,
+      `/department-user/update`,
       {
         method: 'post',
         data
@@ -61,6 +61,26 @@ class Department {
   static searchUser(data: ISearchDepartmentUser) {
     return request(
       `/department-user/search`,
+      {
+        method: 'post',
+        data
+      }
+    )
+  }
+
+  static updateDepartmentManager(data: IEditDepartmentUser) {
+    return request(
+      `/department-user/manager/update`,
+      {
+        method: 'post',
+        data
+      }
+    )
+  }
+
+  static searchDepartmentManager(data: ISearchDepartmentUser) {
+    return request(
+      `/department-user/manager/search`,
       {
         method: 'post',
         data

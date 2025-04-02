@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Tag, Form } from '@/components';
+import { List, Tag, Form, Access } from '@/components';
 import {
   usePaginatedRequest,
   useSearch,
@@ -7,7 +7,7 @@ import {
 import DepartmentService from '@/services/department';
 import type { IDepartment } from '@/services/department/type'
 import type { ICommonItem } from '@/services/type'
-import { EditDepartment, Search } from './components';
+import { EditDepartment, Search, EditDepartmentUser, SettingManager } from './components';
 
 const Department: React.FC = () => {
 
@@ -59,10 +59,30 @@ const Department: React.FC = () => {
   const renderAction = (record: IDepartment) => {
     return (
       <>
-        <EditDepartment
-          departmentId={record?.id}
-          successCallback={() => setRefreshDepsFn.toggle()}
-        />
+        <Access
+          permission='部门管理部门管理新增/编辑'
+        >
+          <EditDepartment
+            departmentId={record?.id}
+            successCallback={() => setRefreshDepsFn.toggle()}
+          />
+        </Access>
+        <Access
+          permission='部门管理部门管理编辑部门用户'
+        >
+          <EditDepartmentUser
+            departmentId={record?.id}
+            successCallback={() => setRefreshDepsFn.toggle()}
+          />
+        </Access>
+        <Access
+          permission='部门管理部门管理设置主管'
+        >
+          <SettingManager
+            departmentId={record?.id}
+            successCallback={() => setRefreshDepsFn.toggle()}
+          />
+        </Access>
       </>
     );
   };

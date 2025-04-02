@@ -1,26 +1,25 @@
-import React from 'react'
-import { UserAddOutlined } from '@ant-design/icons';
+import React, { useEffect } from 'react'
 import { useLocale, useRequest } from '@/hooks'
 import {
   Modal,
   Form,
   Spin,
-  AutoComplete,
-  Tooltip,
   Button,
   message,
+  Select,
 } from '@/components'
 import { useToggle } from 'ahooks'
-import Department from '@/services/department'
-import Condition from '@/services/condition';
+import DepartmentService from '@/services/department'
+import UserService from '@/services/account'
+import type { IDepartmentUser } from '@/services/department/type'
 
-interface AddDepartmentUserProps {
-  setRefreshDeps: () => void;
+interface EditDepartmentUserProps {
+  successCallback: () => void;
   departmentId: number;
 }
 
-export const AddDepartmentUser: React.FC<AddDepartmentUserProps> = ({
-  setRefreshDeps,
+export const EditDepartmentUser: React.FC<EditDepartmentUserProps> = ({
+  successCallback,
   departmentId,
 }) => {
 
@@ -28,19 +27,38 @@ export const AddDepartmentUser: React.FC<AddDepartmentUserProps> = ({
   const [visible, setVisibleFn] = useToggle(false)
   const [form] = Form.useForm()
 
-  const addUserRequest = useRequest(
-    Department.addUser,
+  const getDepartmentUserRequest = useRequest(
+    DepartmentService.searchUser,
     {
-      onSuccess: () => {
-        message.success(t('operate_success'));
-        onCancel()
-        setRefreshDeps()
+      onSuccess: (data: IDepartmentUser[]) => {
+        const userIds = data?.map((item) => item?.userId)
+        form.setFieldsValue({
+          userIds
+        })
       }
     }
   )
 
-  const addUser = () => {
-    console.log('addUser')
+  const editUserRequest = useRequest(
+    DepartmentService.updateUser,
+    {
+      onSuccess: () => {
+        message.success(t('operate_success'));
+        onCancel()
+        successCallback()
+      }
+    }
+  )
+
+  useEffect(() => {
+    if (visible && departmentId) {
+      getDepartmentUserRequest.run({
+        departmentId
+      })
+    }
+  }, [visible])
+
+  const editUser = () => {
     setVisibleFn.toggle()
   }
   
@@ -51,23 +69,29 @@ export const AddDepartmentUser: React.FC<AddDepartmentUserProps> = ({
 
   const submit = async () => {
     const formData = await form.validateFields()
-    addUserRequest.run({
+    editUserRequest.run({
       ...formData,
       departmentId
     })
   }
 
+  const renderLoding = () => {
+    return [
+      editUserRequest?.loading,
+    ]?.includes(true)  
+  }
+
   return (
     <>
-      <Tooltip
-        title={t('department_append_user')}
+      <Button
+        type="link"
+        inTable={true}
+        onClick={editUser}
       >
-        <UserAddOutlined
-          onClick={addUser}
-        />
-      </Tooltip>
+        { t('department_edit_user') }
+      </Button>
       <Modal
-        title={t('department_append_user')}
+        title={t('department_edit_user')}
         open={visible}
         onCancel={onCancel}
         footer={[
@@ -80,7 +104,7 @@ export const AddDepartmentUser: React.FC<AddDepartmentUserProps> = ({
           <Button
             key='submit'
             type='primary'
-            disabled={addUserRequest?.loading}
+            disabled={renderLoding()}
             onClick={submit}
           >
             确定
@@ -88,7 +112,7 @@ export const AddDepartmentUser: React.FC<AddDepartmentUserProps> = ({
         ]}
       >
         <Spin
-          spinning={addUserRequest?.loading}
+          spinning={renderLoding()}
         >
           <Form
             name="add-department-user"
@@ -97,17 +121,13 @@ export const AddDepartmentUser: React.FC<AddDepartmentUserProps> = ({
             <Form.Item
               label={t('department_choose_user')}
               name="userIds"
-              rules={[{
-                required: true,
-                message: t('department_sumbit_rule_choose_user_message')
-              }]}
             >
-              <AutoComplete
-                asyncHandle={Condition.user}
-                searchKeyword='username'
+              <Select
+                asyncHandle={UserService.getAllUser}
                 selectKey='id'
                 selectLabel='name'
                 mode='multiple'
+                refreshDeps={visible}
               />
             </Form.Item>
           </Form>

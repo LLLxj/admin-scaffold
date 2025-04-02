@@ -4,10 +4,10 @@ import {
   Col,
 } from '@/components';
 import type { FunctionsProps } from './type';
-import { EditDepartment, DeleteDepartment, AddDepartmentUser } from '../index'
+import { EditDepartment, DeleteDepartment, EditDepartmentUser } from '../index'
 
 export const Functions: React.FC<FunctionsProps> = ({
-  node,
+  department,
   successCallback,
 }) => {
 
@@ -18,19 +18,19 @@ export const Functions: React.FC<FunctionsProps> = ({
       <Col>
         <EditDepartment
           successCallback={successCallback}
-          departmentId={node.key as number}
+          departmentId={department?.id}
         />
       </Col>
       <Col>
-        <AddDepartmentUser
-          setRefreshDeps={successCallback}
-          departmentId={node.key as number}
+        <EditDepartmentUser
+          successCallback={successCallback}
+          departmentId={department?.id}
         />
       </Col>
       <Col>
         <DeleteDepartment
-          setRefreshDeps={successCallback}
-          departmentId={node.key as number}
+          successCallback={successCallback}
+          departmentId={department?.id}
         />
       </Col>
     </Row>

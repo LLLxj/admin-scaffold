@@ -34,3 +34,11 @@ export interface EditProps {
   successCallback?: () => void;
 }
 
+export interface ISearchRef {
+  getFormValue: () => void;
+}
+
+export interface ISearchProps {
+  searchHandle: () => void;
+}
+
