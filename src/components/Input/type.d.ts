@@ -1,5 +1,7 @@
 import type { InputProps } from 'antd'
 
-type ICommonInput = InputProps
+export type ICommonInput = InputProps
 
-export { ICommonInput }
+interface ICommonTextArea extends InputProps {
+  allowClear?: boolean;
+}

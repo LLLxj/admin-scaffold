@@ -9,6 +9,7 @@ export const Select: React.FC<ICommonSelectProps> = ({
   asyncParams,
   selectKey = 'value',
   selectLabel = 'label',
+  refreshDeps,
   options: initOptions,
   ...props
 }) => {
@@ -18,16 +19,11 @@ export const Select: React.FC<ICommonSelectProps> = ({
     if (asyncHandle) {
       getListRequest.run(asyncParams);
     }
-  }, [asyncHandle]);
+  }, [refreshDeps]);
 
   useEffect(() => {
     if (initOptions?.length) {
-      setOptions((prev) => {
-        return [
-          ...initOptions,
-          ...prev,
-        ]
-      })
+      setOptions(initOptions)
     }
   }, [initOptions])
 
