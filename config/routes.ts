@@ -9,29 +9,20 @@ const routes = [
         component: './Dashboard',
       },
       {
-        path: '/task',
-        name: 'route_task_manage',
-        // permissionCodes: [
-        //   '任务管理',
-        //   '任务管理列表',
-        //   '任务看板'
-        // ],
+        path: '/shop',
+        name: 'route_shop_manage',
+        permissionCodes: [
+          '店家管理',
+          '店家列表',
+        ],
         routes: [
           {
-            path: '/task/manage',
-            name: 'route_task_list',
+            path: '/shop/index',
+            name: 'route_shop_list',
             permissionCodes: [
-              '任务管理任务管理列表',
+              '店家列表',
             ],
-            component: './Task/Manage',
-          },
-          {
-            path: '/task/dashboard',
-            name: 'route_task_dashboard',
-            permissionCodes: [
-              '任务管理任务看板',
-            ],
-            component: './Task/Dashboard',
+            component: './Shop',
           },
         ]
       },
@@ -88,11 +79,11 @@ const routes = [
           },
         ]
       },
-      {
-        path: '/tag',
-        name: 'route_tag',
-        component: './Tag',
-      },
+      // {
+      //   path: '/tag',
+      //   name: 'route_tag',
+      //   component: './Tag',
+      // },
     ],
   },
   {
