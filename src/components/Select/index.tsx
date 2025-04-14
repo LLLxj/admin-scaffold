@@ -1,6 +1,7 @@
-import { useRequest } from '@/hooks';
-import { Select as AntdSelect } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { Select as AntdSelect } from 'antd';
+import { useRequest } from '@/hooks';
+import lodash from 'lodash'
 import type { ICommonSelectProps, ISelectOption } from './type';
 
 export const Select: React.FC<ICommonSelectProps> = ({
@@ -19,11 +20,15 @@ export const Select: React.FC<ICommonSelectProps> = ({
     if (asyncHandle) {
       getListRequest.run(asyncParams);
     }
-  }, [refreshDeps]);
+  }, [refreshDeps, asyncHandle, asyncParams]);
 
   useEffect(() => {
     if (initOptions?.length) {
-      setOptions(initOptions)
+      const _options = mergeOptions([
+        ...options,
+        ...initOptions
+      ])
+      setOptions(_options)
     }
   }, [initOptions])
 
@@ -42,10 +47,15 @@ export const Select: React.FC<ICommonSelectProps> = ({
           ...initOptions,
           ..._options,
         ]
+        _options = mergeOptions(_options)
       }
       setOptions(_options);
     },
   });
+
+  const mergeOptions = (list: ISelectOption[]) => {
+    return lodash.unionBy(list, 'selectKey')
+  }
 
   return (
     <div className="select-container">

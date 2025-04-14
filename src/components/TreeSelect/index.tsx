@@ -1,5 +1,6 @@
 import React, {
   forwardRef,
+  useEffect,
   useImperativeHandle,
   useState,
 } from 'react'
@@ -33,6 +34,12 @@ export const TreeSelect = forwardRef((
       }
     })
   );
+
+  useEffect(() => {
+    if (asyncHandle) {
+      getDataRequest.run(asyncParams)
+    }
+  }, [])
 
   const getDataRequest = useRequest(
     asyncHandle,
