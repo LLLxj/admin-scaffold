@@ -4,7 +4,7 @@ import {
   useSearch,
   useRequest,
 } from '@/hooks';
-import ShopService from '@/services/shop';
+import { Shop as ShopService} from '@/services';
 import {
   List,
   Tag,

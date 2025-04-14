@@ -7,8 +7,7 @@ import type {
   // IUpdateRoleRelation,
   // ISearchRoleRelation,
 } from './type'
-
-class Shop {
+export class Shop {
   static list(data: ISearchShop) {
     return request(
       '/shop/search',
@@ -74,6 +73,13 @@ class Shop {
       }
     )
   }
-}
 
-export default Shop
+  static getAll() {
+    return request(
+      '/shop/all',
+      {
+        method: 'post',
+      }
+    )
+  }
+}

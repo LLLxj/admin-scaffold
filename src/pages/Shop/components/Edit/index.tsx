@@ -1,17 +1,16 @@
-import React, { useMemo, useRef } from 'react'
+import React, { useMemo } from 'react'
 import {
   Button,
   Modal,
   Form,
   Input,
   message,
-  TextArea
+  TextArea,
 } from '@/components'
 import { useToggle } from 'ahooks';
 import { useLocale, useRequest } from '@/hooks';
-import ShopService from '@/services/shop';
+import { Shop as ShopService} from '@/services';
 import type { EditProps } from '@/pages/type'
-import type { TreeRefProps } from '@/components/TreeSelect/type'
 import { IShop } from '@/services/shop/type';
 
 export const EditShop: React.FC<EditProps> = ({
