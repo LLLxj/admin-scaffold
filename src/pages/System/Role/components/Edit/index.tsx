@@ -372,17 +372,24 @@ export const EditRole: React.FC<EditRoleProps> = ({
 
   const onSelect = (treeActiveKey: Key[]) => {
     let formatSelectedKeys: Key[] = treeActiveKey
+    let formatSelectedPermissionKeys: Key[] = treeActiveKey
     if (activeKey === 'role_edit_property') {
       formatSelectedKeys = treeActiveKey?.map(
         (item) => getPropertyKey(item)
       )
+    } else if (activeKey === 'role_edit_rule') {
+      formatSelectedPermissionKeys = treeActiveKey?.map(
+        (item) => getRuleKey(item)
+      )
     }
-    const _resourceId  = formatSelectedKeys?.[0]
+    const _resourceId = formatSelectedKeys?.[0]
+    const _permissionId  = formatSelectedPermissionKeys?.[0] as number
     setSelectedKeys(treeActiveKey)
     setResourceId(_resourceId)
     getRelations({
       resourceId: _resourceId,
       type: activeKey,
+      permissionId: _permissionId
     })
   }
 
@@ -407,10 +414,12 @@ export const EditRole: React.FC<EditRoleProps> = ({
 
   const getRelations = ({
     resourceId,
-    type
+    type,
+    permissionId
   }: {
     resourceId?: Key,
-    type?: ItemKey
+    type?: ItemKey;
+    permissionId?: number
   }) => {
     if (!resourceId || !type) {
       return 
@@ -419,9 +428,6 @@ export const EditRole: React.FC<EditRoleProps> = ({
       resourceId,
       roleId,
     }
-    const formatResourceId = resourceId as string;
-    const keys = formatResourceId?.split('_');
-    const permissionId = keys?.[keys?.length - 1]
     const getPropertyParams = {
       permissionId,
       roleId,

@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useState } from 'react'
+import { forwardRef, useImperativeHandle, useState } from 'react'
 import {
   Modal,
   Input,
@@ -16,7 +16,7 @@ import { useLocale } from '@/hooks';
 import type { ITaskEditInitProps, ITaskEditProps } from './type';
 import TagService from '@/services/tag'
 import type { ITask } from '../type'
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 export const TaskEdit = forwardRef((
   {
@@ -59,11 +59,11 @@ export const TaskEdit = forwardRef((
           content,
           startTime:
             startTime
-              ? moment(startTime, timeFormat)
+              ? dayjs(startTime, timeFormat)
               : undefined,
           endTime:
             endTime
-              ? moment(endTime, timeFormat)
+              ? dayjs(endTime, timeFormat)
               : undefined,
           duration,
           tagId: tag?.id,
