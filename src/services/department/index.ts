@@ -7,7 +7,7 @@ import type {
   ISearchCondition,
 } from './type'
 
-class Department {
+export class Department {
 
   static search(data: ISearchCondition) {
     return request(

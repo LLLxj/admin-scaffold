@@ -4,7 +4,7 @@ import type {
   IUpdateUserRole
 } from './type'
 
-class Account {
+export class Account {
 
   static create(data: ICreateUser): Promise<any> {
     return request(
@@ -67,7 +67,7 @@ class Account {
     );
   }
 
-  static getAllUser(): Promise<any> {
+  static getAll(): Promise<any> {
     return request(
       '/user/all',
       {
