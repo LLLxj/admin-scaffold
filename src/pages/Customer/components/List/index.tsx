@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import {
   usePaginatedRequest,
   useSearch,
@@ -9,15 +9,13 @@ import {
   Tag,
   Access,
   TableAction,
+  Form,
 } from '@/components'
 import { Search, EditCustomer } from '../index'
-import type { ISearchRef } from '@/pages/type'
 import type { ICustomer } from '@/services/customer/type'
 import type { ICommonItem } from '@/services/type'
 
 export const CustomerList: React.FC = () => {
-
-  
 
   const {
     t,
@@ -30,7 +28,8 @@ export const CustomerList: React.FC = () => {
     pages,
   } = useSearch<ICustomer>({});
  
-  const searchRef = useRef<ISearchRef>();
+  const [searchForm] = Form.useForm()
+  
 
   const getListRequest = usePaginatedRequest(
     (pageConfig) => {
@@ -56,8 +55,7 @@ export const CustomerList: React.FC = () => {
   );
 
   const searchHandle = async () => {
-    const formData: Record<string, any> =
-      (await searchRef.current?.getFormValue()) || {};
+    const formData = await searchForm.getFieldsValue()
     setSearchParams((prev: any) => ({
       ...prev,
       ...formData,
@@ -164,8 +162,8 @@ export const CustomerList: React.FC = () => {
       <List
         searchContainer={
           <Search
-            ref={searchRef}
             searchHandle={searchHandle}
+            form={searchForm}
           />
         }
         tableConfig={{

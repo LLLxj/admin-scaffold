@@ -29,4 +29,4 @@ export type ButtonType =
   | "text"
   | "primary"
   | "dashed"
-  | undefined
+  | undefined;

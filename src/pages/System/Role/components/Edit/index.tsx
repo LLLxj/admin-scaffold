@@ -150,29 +150,29 @@ export const EditRole: React.FC<EditRoleProps> = ({
     }
   )
 
-  const getRuleTreeRequest = useRequest(
-    ResourceService.getResourceTree,
-    {
-      manual: true,
-      onSuccess: (data: ISearchResourceTreeItem[]) => {
-        const _treeData = data?.map((item) => {
-          return {
-            title: item?.name,
-            value: item?.id,
-            key: item?.id,
-            children: item?.children?.map((p) => {
-              return {
-                title: p?.name,
-                value: p?.id,
-                key: p?.id,
-              }
-            })
-          }
-        })
-        resourceTreeRef.current?.setData(_treeData)
-      }
-    }
-  )
+  // const getRuleTreeRequest = useRequest(
+  //   ResourceService.getResourceTree,
+  //   {
+  //     manual: true,
+  //     onSuccess: (data: ISearchResourceTreeItem[]) => {
+  //       const _treeData = data?.map((item) => {
+  //         return {
+  //           title: item?.name,
+  //           value: item?.id,
+  //           key: item?.id,
+  //           children: item?.children?.map((p) => {
+  //             return {
+  //               title: p?.name,
+  //               value: p?.id,
+  //               key: p?.id,
+  //             }
+  //           })
+  //         }
+  //       })
+  //       resourceTreeRef.current?.setData(_treeData)
+  //     }
+  //   }
+  // )
 
   const getPermissionRelationRequest = useRequest(
     RoleService.getPermissionRelation,

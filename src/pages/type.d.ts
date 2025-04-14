@@ -15,7 +15,7 @@ export type IHandleType = 'enabled' | 'disabled' | 'delete';
 
 export interface ISearchProps {
   searchHandle: () => void;
-  form?: FormInstance;
+  form: FormInstance;
 }
 export interface ISearchRefProps {
   getFormValue: () => void;
@@ -40,5 +40,6 @@ export interface ISearchRef {
 
 export interface ISearchProps {
   searchHandle: () => void;
+  form: FormInstance;
 }
 
