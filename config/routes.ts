@@ -27,6 +27,14 @@ const routes = [
         ]
       },
       {
+        path: '/customer',
+        name: 'route_customer',
+        permissionCodes: [
+          '客户管理客户列表',
+        ],
+        component: './Customer',
+      },
+      {
         path: '/system',
         name: 'route_system_config',
         permissionCodes: [
