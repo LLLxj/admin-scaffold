@@ -14,6 +14,9 @@ export default {
   prev: '上一步',
   operate_success: '操作成功',
   table_column_action: '操作',
+  male: '男',
+  female: '女',
+  unknow: '未知',
 
   column_id: 'id',
 
@@ -133,6 +136,33 @@ export default {
   permission_remove_resource_confirm_title: '删除权限',
   permission_remove_resource_confirm_description: '确认删除权限，此操作不可恢复',
 
+  // customer module
+  customer_search_name_label: '客户名称',
+  customer_search_mobile_label: '客户手机号',
+  customer_column_name: '客户名称',
+  customer_column_mobile: '客户手机号',
+  customer_column_shop: '推荐店家',
+  customer_column_department: '归属部门',
+  customer_column_belong_user: '归属人员',
+  customer_column_birth_date: '出生年月',
+  customer_column_gender: '性别',
+  customer_column_remark: '备注',
+  customer_edit_name: '客户名称',
+  customer_edit_mobile: '客户手机号',
+  customer_edit_birthday: '出生年月',
+  customer_edit_gender: '性别',
+  customer_edit_shop: '推荐店家',
+  customer_edit_department: '归属部门',
+  customer_edit_belong_user: '归属人员',
+  customer_edit_remark: '备注',
+  customer_sumbit_rule_name_message: '客户名称不能为空',
+  customer_sumbit_rule_gender_message: '性别不能为空',
+  customer_sumbit_rule_department_message: '归属部门不能为空',
+  customer_sumbit_rule_belong_user_message: '归属人员不能为空',
+  customer_sumbit_rule_shop_message: '推荐店家不能为空',
+  customer_remove_customer_confirm_title: '删除客户',
+  customer_remove_customer_confirm_description: '确定删除客户',
+
   // router
   route_dashboard: '首页',
   route_shop_manage: '店家管理',
@@ -143,4 +173,5 @@ export default {
   route_system_account: '账号管理',
   route_system_resource: '资源管理',
   route_system_permission: '权限管理',
+  route_customer: '客户管理',
 };

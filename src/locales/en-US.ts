@@ -14,6 +14,9 @@ export default {
   prev: 'prev',
   operate_success: 'operate success',
   table_column_action: 'action',
+  male: 'male',
+  female: 'female',
+  unknow: 'unknow',
 
   column_id: 'id',
 
@@ -135,6 +138,33 @@ export default {
   permission_remove_resource_confirm_title: 'delete permission',
   permission_remove_resource_confirm_description: 'confirm delete permission',
 
+  // customer module
+  customer_search_name_label: 'customer name',
+  customer_search_mobile_label: 'customer mobile',
+  customer_column_name: 'customer name',
+  customer_column_mobile: 'customer mobile',
+  customer_column_store: 'belong store',
+  customer_column_department: 'belong department',
+  customer_column_belong_user: 'belong user',
+  customer_column_birth_date: 'birth date',
+  customer_column_gender: 'gender',
+  customer_column_remark: 'remark',
+  customer_edit_name: 'customer name',
+  customer_edit_mobile: 'customer mobile',
+  customer_edit_birth_date: 'birth date',
+  customer_edit_gender: 'gender',
+  customer_edit_shop: 'belong shop',
+  customer_edit_department: 'belong department',
+  customer_edit_belong_user: 'belong user',
+  customer_edit_remark: 'remark',
+  customer_sumbit_rule_name_message: 'customer name is not empty',
+  customer_sumbit_rule_gender_message: 'gender is not empty',
+  customer_sumbit_rule_department_message: 'belong department is not empty',
+  customer_sumbit_rule_belong_user_message: 'belong user is not empty',
+  customer_sumbit_rule_shop_message: 'belong shop is not empty',
+  customer_remove_customer_confirm_title: 'customer',
+  customer_remove_customer_confirm_description: 'customer',
+
   // router
   route_dashboard: 'dashboard',
   route_shop_manage: 'shop manage',
@@ -146,4 +176,5 @@ export default {
   route_system_account: 'account manage',
   route_system_resource: 'resource manage',
   route_system_permission: 'permission manage',
+  route_customer: 'customer manage',
 };
