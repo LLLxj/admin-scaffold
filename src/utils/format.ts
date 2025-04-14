@@ -1,14 +1,19 @@
 import type { ITree } from '@/components/TreeSelect/type'
 
-export const formatTree = (initTree: any[] = [], id: string, name: string) => {
+export const formatTree = (
+  initTree: any[] = [],
+  titleKey: string,
+  valueKey: string,
+  childrenKey: string = 'children',
+) => {
   if (!initTree?.length) {
     return []
   }
   const tree: ITree[] = initTree?.map((item) => {
     return {
-      title: item?.[name],
-      value: item?.[id],
-      children: formatTree(item?.children, id, name)
+      title: item?.[titleKey],
+      value: item?.[valueKey],
+      children: formatTree(item?.[childrenKey], titleKey, valueKey)
     }
   })
   return tree
