@@ -163,6 +163,21 @@ export default {
   customer_remove_customer_confirm_title: '删除客户',
   customer_remove_customer_confirm_description: '确定删除客户',
 
+  // dictionary module
+  dictionary_search_code_label: '字典code',
+  dictionary_search_describe_label: '描述',
+  dictionary_column_code: '字典code',
+  dictionary_column_describe: '描述',
+  dictionary_column_items: '字典值',
+  dictionary_edit_code: '字典code',
+  dictionary_edit_describe: '描述',
+  dictionary_edit_item_text: '键',
+  dictionary_edit_item_value: '值',
+  dictionary_edit_item_sort_order: '排序',
+  dictionary_sumbit_rule_code_message: '字典code不能为空',
+  dictionary_sumbit_rule_text_message: '字典键不能为空',
+  dictionary_sumbit_rule_value_message: '字典值不能为空',
+
   // router
   route_dashboard: '首页',
   route_shop_manage: '店家管理',
@@ -173,5 +188,6 @@ export default {
   route_system_account: '账号管理',
   route_system_resource: '资源管理',
   route_system_permission: '权限管理',
+  route_system_dictionary: '字典管理',
   route_customer: '客户管理',
 };

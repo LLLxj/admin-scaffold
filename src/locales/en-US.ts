@@ -165,6 +165,21 @@ export default {
   customer_remove_customer_confirm_title: 'customer',
   customer_remove_customer_confirm_description: 'customer',
 
+  // dictionary module
+  dictionary_search_code_label: 'code',
+  dictionary_search_describe_label: 'describe',
+  dictionary_column_code: 'code',
+  dictionary_column_describe: 'describe',
+  dictionary_column_items: 'dictionary items',
+  dictionary_edit_code: 'describe',
+  dictionary_edit_describe: 'describe',
+  dictionary_edit_item_text: 'text',
+  dictionary_edit_item_value: 'value',
+  dictionary_edit_item_sort_order: 'sort order',
+  dictionary_sumbit_rule_code_message: 'code is not empty',
+  dictionary_sumbit_rule_text_message: 'text is not empty',
+  dictionary_sumbit_rule_value_message: 'value is not empty',
+
   // router
   route_dashboard: 'dashboard',
   route_shop_manage: 'shop manage',
@@ -176,5 +191,6 @@ export default {
   route_system_account: 'account manage',
   route_system_resource: 'resource manage',
   route_system_permission: 'permission manage',
+  route_system_dictionary: 'dictionary manage',
   route_customer: 'customer manage',
 };

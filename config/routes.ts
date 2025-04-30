@@ -43,6 +43,7 @@ const routes = [
           '用户管理',
           '资源管理',
           '权限管理',
+          '字典管理'
         ],
         routes: [
           {
@@ -84,6 +85,14 @@ const routes = [
             path: '/system/permission',
             name: 'route_system_permission',
             component: './System/Permission',
+          },
+          {
+            permissionCodes: [
+              '字典管理字典管理列表',
+            ],
+            path: '/system/dictionary',
+            name: 'route_system_dictionary',
+            component: './System/Dictionary',
           },
         ]
       },
