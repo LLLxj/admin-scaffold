@@ -18,6 +18,7 @@ import {
   Shop as ShopService,
   Account as AccountService,
   Department as DepartmentService,
+  Dictionary as DictionaryService,
 } from '@/services';
 import type { EditProps } from '@/pages/type'
 import { ICustomer } from '@/services/customer/type';
@@ -85,7 +86,9 @@ export const EditCustomer: React.FC<EditProps> = ({
             birthDate:
               data?.birthDate
                 ? dayjs(data?.birthDate)
-                : undefined
+                : undefined,
+            tagIds:
+              data?.tags?.map((item) => item?.id) || []
           })
         }
       }
@@ -141,7 +144,7 @@ export const EditCustomer: React.FC<EditProps> = ({
       <Modal
         title={title}
         open={visible}
-        height={500}
+        height={600}
         onCancel={onCancel}
         loading={renderLoding()}
         footer={[
@@ -245,6 +248,21 @@ export const EditCustomer: React.FC<EditProps> = ({
           >
             <Select
               asyncHandle={AccountService.getAll}
+              selectKey='id'
+              selectLabel='name'
+              refreshDeps={visible}
+            />
+          </Form.Item>
+          <Form.Item
+            label={t('customer_edit_tag')}
+            name='tagIds'
+          >
+            <Select
+              asyncHandle={DictionaryService.list}
+              asyncParams={{
+                code: 'CUSTOMER_TAG'
+              }}
+              mode='multiple'
               selectKey='id'
               selectLabel='name'
               refreshDeps={visible}

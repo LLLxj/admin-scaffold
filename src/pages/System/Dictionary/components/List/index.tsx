@@ -96,7 +96,7 @@ export const DictionaryList: React.FC = () => {
         if (!items?.length) {
           return undefined
         }
-        return items?.map((item) => item?.text)?.join(',')
+        return items?.map((item) => item?.name)?.join(',')
       }
     },
     {

@@ -192,8 +192,8 @@ export const EditDictionary: React.FC<EditProps> = ({
                           wrapperCol={{
                             span: 14
                           }}
-                          key={`text${index + 1}`}
-                          name={[field.name, 'text']}
+                          key={`name${index + 1}`}
+                          name={[field.name, 'name']}
                           label={t('dictionary_edit_item_text')}
                           rules={[{
                             required: true,

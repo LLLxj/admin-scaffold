@@ -135,6 +135,13 @@ export const CustomerList: React.FC = () => {
       }
     },
     {
+      title: t('customer_edit_tag'),
+      dataIndex: 'tags',
+      render: (tags: ICommonItem[]) => {
+        return tags?.map((item) => item?.name)?.join(',')
+      }
+    },
+    {
       title: t('status'),
       dataIndex: 'enabled',
       render: (_: any, record: ICustomer) => {

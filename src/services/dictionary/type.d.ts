@@ -10,7 +10,7 @@ export interface ICreateDictionary {
 
 export interface IDictionaryItem {
   id: number;
-  text: string;
+  name: string;
 }
 
 export type IDictionary = ICreateDictionary

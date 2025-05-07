@@ -10,6 +10,7 @@ export interface ICustomer {
   shop: ICommonItem;
   user: ICommonItem;
   enabled: boolean;
+  tags?: ICommonItem[];
 }
 
 export interface IUpdateCustomer {

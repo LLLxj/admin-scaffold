@@ -44,6 +44,18 @@ export class Dictionary {
       }
     );
   }
+
+  static list(data: {
+    code: string
+  }): Promise<any> {
+    return request(
+      `/dictionary/value/list`,
+      {
+        method: 'post',
+        data,
+      }
+    );
+  }
 }
 
 export default Dictionary
