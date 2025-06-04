@@ -82,6 +82,10 @@ export const DictionaryList: React.FC = () => {
       dataIndex: 'id',
     },
     {
+      title: t('dictionary_column_name'),
+      dataIndex: 'name',
+    },
+    {
       title: t('dictionary_column_code'),
       dataIndex: 'code',
     },

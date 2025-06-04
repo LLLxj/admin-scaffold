@@ -159,6 +159,16 @@ export const EditDictionary: React.FC<EditProps> = ({
           form={form}
         >
           <Form.Item
+            label={t('dictionary_edit_name')}
+            name='name'
+            rules={[{
+              required: true,
+              message: t('dictionary_sumbit_rule_name_message')
+            }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
             label={t('dictionary_edit_code')}
             name='code'
             rules={[{

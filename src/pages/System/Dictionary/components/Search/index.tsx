@@ -24,14 +24,14 @@ export const Search: React.FC<ISearchProps> = ({
   return (
     <div>
       <Form
-        name="customer-search"
+        name="dictionary-search"
         form={form}
         labelCol={{ span: 8 }}
       >
         <Row gutter={[20, 10]}>
           <Col span={8}>
             <Form.Item
-              label={t('customer_search_name_label')}
+              label={t('dictionary_search_name_label')}
               name="name"
             >
               <Input />
@@ -39,8 +39,8 @@ export const Search: React.FC<ISearchProps> = ({
           </Col>
           <Col span={8}>
             <Form.Item
-              label={t('customer_search_mobile_label')}
-              name="mobile"
+              label={t('dictionary_search_code_label')}
+              name="code"
             >
               <Input />
             </Form.Item>
