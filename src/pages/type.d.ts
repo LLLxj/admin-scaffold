@@ -43,3 +43,8 @@ export interface ISearchProps {
   form: FormInstance;
 }
 
+export interface ICategory {
+  id: number;
+  name: string;
+}
+
