@@ -35,6 +35,40 @@ const routes = [
         component: './Customer',
       },
       {
+        path: '/project',
+        name: 'route_project',
+        permissionCodes: [
+          '项目管理',
+          '项目细项管理',
+        ],
+        routes: [
+          {
+            permissionCodes: [
+              '项目管理',
+            ],
+            path: '/project/list',
+            name: 'route_project',
+            component: './Project',
+          },
+          {
+            permissionCodes: [
+              '项目细项管理',
+            ],
+            path: '/project/item/list',
+            name: 'route_project_item',
+            component: './ProjectItem',
+          },
+        ]
+      },
+      {
+        path: '/consumer',
+        name: 'route_consumer',
+        permissionCodes: [
+          '耗材管理',
+        ],
+        component: './Consumer',
+      },
+      {
         path: '/system',
         name: 'route_system_config',
         permissionCodes: [
