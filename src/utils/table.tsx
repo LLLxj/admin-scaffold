@@ -1,7 +1,6 @@
 /**
  * @description 初始化antd table 表格宽度
  */
-
 export const countTableCellWidth = ({
   title,
   titleCol = 0,
@@ -14,4 +13,6 @@ export const countTableCellWidth = ({
   const width = _titleLength * baseWidth + 32;
   return width;
 };
+
+
 
